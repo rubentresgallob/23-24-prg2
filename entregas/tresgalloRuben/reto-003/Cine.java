@@ -1,18 +1,22 @@
-public class Cine{
+import java.time.LocalDate;
+
+public class Cine {
     public Pelicula pelicula;
     public Ticket ticket;
     public Visitante visitante;
-    
-    
-    public Cine(Pelicula pelicula, Visitante visitante, Ticket ticket LocalDate apertura, LocalDate cierre){
+    public LocalDate apertura;
+    public LocalDate cierre;
 
-        public boolean abierto()
-
+    public Cine(Pelicula pelicula, Visitante visitante, Ticket ticket, LocalDate apertura, LocalDate cierre) {
         this.pelicula = pelicula;
-        this.ticket = ticket;
         this.visitante = visitante;
-        
+        this.ticket = ticket;
+        this.apertura = apertura;
+        this.cierre = cierre;
     }
 
-
+    public boolean abierto() {
+        LocalDate hoy = LocalDate.now();
+        return !hoy.isBefore(apertura) && !hoy.isAfter(cierre);
+    }
 }
